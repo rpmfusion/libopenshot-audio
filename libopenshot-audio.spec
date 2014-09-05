@@ -13,7 +13,7 @@ BuildRequires:  cmake
 BuildRequires:  freetype-devel
 BuildRequires:  alsa-lib-devel
 BuildRequires:  libX11-devel
-#BuildRequires:  libXinerama-devel
+BuildRequires:  libXinerama-devel
 BuildRequires:  libXcursor-devel
 
 %description
