@@ -1,8 +1,6 @@
-%global optflags %(echo %{optflags} -Wl,--as-needed )
-
 Name:           libopenshot-audio
-Version:        0.0.4
-Release:        2%{?dist}
+Version:        0.0.6
+Release:        1%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
@@ -17,6 +15,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  libXcursor-devel
+BuildRequires:  libXrandr-devel
 
 %description
 OpenShot Audio Library (libopenshot-audio) is an open-source 
@@ -39,6 +38,7 @@ developing applications that use %{name}.
 
 
 %build
+export CXXFLAGS="%{optflags} -Wl,--as-needed"
 %cmake .
 make %{?_smp_mflags}
 
@@ -65,6 +65,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Mon Nov 16 2015 Richard Shaw <hobbes1069@gmail.com> - 0.0.6-1
+- Update to latest upstream release.
+
 * Thu Jun 25 2015 Sérgio Basto <sergio@serjux.com> - 0.0.4-2
 - Fixed unused-direct-shlib-dependency in cmake with global optflags.
 
