@@ -15,6 +15,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  libXcursor-devel
+BuildRequires:  libXrandr-devel
 
 %description
 OpenShot Audio Library (libopenshot-audio) is an open-source 
