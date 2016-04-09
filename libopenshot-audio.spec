@@ -1,11 +1,11 @@
 Name:           libopenshot-audio
-Version:        0.0.6
+Version:        0.1.1
 Release:        1%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
 URL:            http://openshot.org/
-Source0:        https://launchpad.net/libopenshot/0.0/%{version}/+download/%{name}-%{version}.tar.gz
+Source0:        https://launchpad.net/libopenshot/0.1/%{version}/+download/%{name}-%{version}.tar.gz
 
 Patch0:         libopenshot-audio-0.0.3-libs.patch
 
@@ -33,7 +33,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q
+%setup -qc
 %patch0 -p1 -b .libs
 
 
@@ -65,6 +65,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Fri Apr  8 2016 Richard Shaw <hobbes1069@gmail.com> - 0.1.1-1
+- Update to latest upstream release.
+
 * Mon Nov 16 2015 Richard Shaw <hobbes1069@gmail.com> - 0.0.6-1
 - Update to latest upstream release.
 
