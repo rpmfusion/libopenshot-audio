@@ -1,11 +1,11 @@
 Name:           libopenshot-audio
-Version:        0.1.2
-Release:        3%{?dist}
+Version:        0.1.4
+Release:        1%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
 URL:            http://openshot.org/
-Source0:        https://launchpad.net/libopenshot/0.1/%{version}/+download/%{name}-%{version}.tar.gz
+Source0:        https://github.com/OpenShot/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 Patch0:         libopenshot-audio-0.0.3-libs.patch
 
@@ -33,7 +33,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -qc
+%setup -q
 %patch0 -p1 -b .libs
 
 
@@ -65,6 +65,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Sat Sep 02 2017 Sérgio Basto <sergio@serjux.com> - 0.1.4-1
+- Update libopenshot-audio to 0.1.4
+
 * Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 0.1.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
