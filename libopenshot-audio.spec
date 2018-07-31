@@ -1,5 +1,6 @@
 Name:           libopenshot-audio
-Version:        0.1.1
+
+Version:        0.1.6
 Release:        1%{?dist}
 Summary:        Audio library used by OpenShot
 
@@ -8,7 +9,9 @@ URL:            http://openshot.org/
 Source0:        https://launchpad.net/libopenshot/0.1/%{version}/+download/%{name}-%{version}.tar.gz
 
 Patch0:         libopenshot-audio-0.0.3-libs.patch
+Patch1:         libopenshot-audio-isfinite.patch
 
+BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  freetype-devel
 BuildRequires:  alsa-lib-devel
@@ -33,8 +36,9 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -qc
+%setup -q
 %patch0 -p1 -b .libs
+%patch1 -p1 -b .finite
 
 
 %build
@@ -65,6 +69,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Tue Jul 31 2018 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.6-1
+- New upstream release
+
 * Fri Apr  8 2016 Richard Shaw <hobbes1069@gmail.com> - 0.1.1-1
 - Update to latest upstream release.
 
