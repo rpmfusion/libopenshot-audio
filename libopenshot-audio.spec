@@ -1,13 +1,13 @@
 Name:           libopenshot-audio
-Version:        0.1.6
-Release:        1%{?dist}
+Version:        0.1.7
+Release:        2%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
 URL:            http://openshot.org/
 Source0:        https://github.com/OpenShot/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-Patch0:         libopenshot-audio-0.0.3-libs.patch
+Patch0:         libopenshot-audio-noXinerama.patch
 Patch1:         libopenshot-audio-isfinite.patch
 
 BuildRequires:  gcc-c++
@@ -15,7 +15,6 @@ BuildRequires:  cmake
 BuildRequires:  freetype-devel
 BuildRequires:  alsa-lib-devel
 BuildRequires:  libX11-devel
-BuildRequires:  libXinerama-devel
 BuildRequires:  libXcursor-devel
 BuildRequires:  libXrandr-devel
 
@@ -68,6 +67,12 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Mon Sep 24 2018 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.7-2
+- Update patch to completely remove Xinerama dependency
+
+* Mon Sep 24 2018 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.7-1
+- New upstream release
+
 * Tue Jul 31 2018 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.6-1
 - New upstream release
 
