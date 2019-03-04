@@ -1,6 +1,6 @@
 Name:           libopenshot-audio
 Version:        0.1.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
@@ -67,6 +67,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.1.7-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Mon Sep 24 2018 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.7-2
 - Update patch to completely remove Xinerama dependency
 
