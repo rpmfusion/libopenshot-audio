@@ -1,6 +1,6 @@
 Name:           libopenshot-audio
-Version:        0.1.7
-Release:        3%{?dist}
+Version:        0.1.8
+Release:        1%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
@@ -17,6 +17,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  libX11-devel
 BuildRequires:  libXcursor-devel
 BuildRequires:  libXrandr-devel
+#BuildRequires:	libXinerama-devel
 
 %description
 OpenShot Audio Library (libopenshot-audio) is an open-source 
@@ -34,9 +35,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q
-%patch0 -p1 -b .libs
-%patch1 -p1 -b .finite
+%autosetup -p1
 
 
 %build
@@ -55,7 +54,7 @@ make %{?_smp_mflags}
 
 
 %files
-%doc AUTHORS COPYING README
+%doc AUTHORS COPYING README.md
 %{_libdir}/*.so.*
 
 %files devel
@@ -67,6 +66,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Fri Mar 22 2019 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.8-1
+- New upstream release
+
 * Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.1.7-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
