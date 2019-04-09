@@ -1,23 +1,34 @@
+%global gitrev 7001b68787c0881a44bcafba98cccae509a31644
+%global shortrev %(c=%{gitrev}; echo ${c:0:7})
+%global gitdate 20190405
+
 Name:           libopenshot-audio
 Version:        0.1.8
-Release:        1%{?dist}
+Release:        2.%{gitdate}git%{shortrev}%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
 URL:            http://openshot.org/
-Source0:        https://github.com/OpenShot/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/OpenShot/%{name}/archive/%{gitrev}.tar.gz#/%{name}-%{shortrev}.tar.gz
 
-Patch0:         libopenshot-audio-noXinerama.patch
-Patch1:         libopenshot-audio-isfinite.patch
+# No longer necessary with JUCE 5.4.3 configuration
+#Patch0:	libopenshot-audio-noXinerama.patch
+# Upstreamed
+#Patch1:	libopenshot-audio-isfinite.patch
+
+# Fix cmake configuration to remove X11 dependency
+Patch2:		libopenshot-audio-noX11.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
-BuildRequires:  freetype-devel
 BuildRequires:  alsa-lib-devel
-BuildRequires:  libX11-devel
-BuildRequires:  libXcursor-devel
-BuildRequires:  libXrandr-devel
-#BuildRequires:	libXinerama-devel
+BuildRequires:  zlib-devel
+# Graphical dependencies in JUCE code removed upstream
+#BuildRequires:  freetype-devel
+#BuildRequires:  libX11-devel
+#BuildRequires:  libXcursor-devel
+#BuildRequires:  libXrandr-devel
+#BuildRequires:  libXinerama-devel
 
 %description
 OpenShot Audio Library (libopenshot-audio) is an open-source 
@@ -35,7 +46,7 @@ developing applications that use %{name}.
 
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{gitrev}
 
 
 %build
@@ -66,6 +77,11 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Tue Apr 09 2019 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.8-2
+- Upgrade to latest git revision, to fix FTBFS with GCC9 on Fedora 30
+- libopenshot-audio upgraded to JUCE 5.4.3 internally
+- Drop patches upstreamed or made unnecessary by JUCE update
+
 * Fri Mar 22 2019 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.8-1
 - New upstream release
 
