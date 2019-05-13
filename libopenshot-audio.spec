@@ -20,7 +20,7 @@ Source0:        https://github.com/OpenShot/%{name}/archive/%{gitrev}.tar.gz#/%{
 Patch2:		libopenshot-audio-noX11.patch
 
 BuildRequires:  gcc-c++
-BuildRequires:  cmake
+BuildRequires:  cmake3
 BuildRequires:  alsa-lib-devel
 BuildRequires:  zlib-devel
 # Graphical dependencies in JUCE code removed upstream
@@ -51,7 +51,7 @@ developing applications that use %{name}.
 
 %build
 export CXXFLAGS="%{optflags} -Wl,--as-needed"
-%cmake .
+%cmake3 .
 make %{?_smp_mflags}
 
 
