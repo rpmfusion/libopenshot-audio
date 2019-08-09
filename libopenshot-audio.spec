@@ -4,7 +4,7 @@
 
 Name:           libopenshot-audio
 Version:        0.1.8
-Release:        2.%{gitdate}git%{shortrev}%{?dist}
+Release:        3.%{gitdate}git%{shortrev}%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
@@ -77,6 +77,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Fri Aug 09 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.1.8-3.20190405git7001b68
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
 * Tue Apr 09 2019 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.8-2
 - Upgrade to latest git revision, to fix FTBFS with GCC9 on Fedora 30
 - libopenshot-audio upgraded to JUCE 5.4.3 internally
