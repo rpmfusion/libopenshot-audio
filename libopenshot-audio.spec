@@ -1,34 +1,16 @@
-%global gitrev 7001b68787c0881a44bcafba98cccae509a31644
-%global shortrev %(c=%{gitrev}; echo ${c:0:7})
-%global gitdate 20190405
-
 Name:           libopenshot-audio
-Version:        0.1.8
-Release:        4.%{gitdate}git%{shortrev}%{?dist}
+Version:        0.1.9
+Release:        1%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
 URL:            http://openshot.org/
-Source0:        https://github.com/OpenShot/%{name}/archive/%{gitrev}.tar.gz#/%{name}-%{shortrev}.tar.gz
-
-# No longer necessary with JUCE 5.4.3 configuration
-#Patch0:	libopenshot-audio-noXinerama.patch
-# Upstreamed
-#Patch1:	libopenshot-audio-isfinite.patch
-
-# Fix cmake configuration to remove X11 dependency
-Patch2:		libopenshot-audio-noX11.patch
+Source0:        https://github.com/OpenShot/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake3
 BuildRequires:  alsa-lib-devel
 BuildRequires:  zlib-devel
-# Graphical dependencies in JUCE code removed upstream
-#BuildRequires:  freetype-devel
-#BuildRequires:  libX11-devel
-#BuildRequires:  libXcursor-devel
-#BuildRequires:  libXrandr-devel
-#BuildRequires:  libXinerama-devel
 
 %description
 OpenShot Audio Library (libopenshot-audio) is an open-source 
@@ -46,7 +28,7 @@ developing applications that use %{name}.
 
 
 %prep
-%autosetup -p1 -n %{name}-%{gitrev}
+%autosetup -p1
 
 
 %build
@@ -77,6 +59,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Thu Feb 13 2020 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.1.9-1
+- New upstream release
+
 * Tue Feb 04 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.1.8-4.20190405git7001b68
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
