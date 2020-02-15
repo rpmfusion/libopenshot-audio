@@ -40,11 +40,9 @@ make %{?_smp_mflags}
 %install
 %make_install
 
-
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
+%if 0%{?rhel} && 0%{?rhel} <= 7
+  %ldconfig_scriptlets
+%endif
 
 %files
 %doc AUTHORS COPYING README.md
