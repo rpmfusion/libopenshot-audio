@@ -7,6 +7,9 @@ License:        GPLv3+
 URL:            http://openshot.org/
 Source0:        https://github.com/OpenShot/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
+# Disabling libopenshot-audio due to libopenshot exclusion, see rfbz #5528
+ExcludeArch:    ppc64le
+
 BuildRequires:  gcc-c++
 BuildRequires:  cmake3
 BuildRequires:  alsa-lib-devel
