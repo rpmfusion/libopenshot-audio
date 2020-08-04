@@ -1,6 +1,6 @@
 Name:           libopenshot-audio
 Version:        0.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
@@ -35,13 +35,13 @@ developing applications that use %{name}.
 
 
 %build
-export CXXFLAGS="%{optflags} -Wl,--as-needed"
-%cmake3 .
-make %{?_smp_mflags}
+#export CXXFLAGS="%{optflags} -Wl,--as-needed"
+%cmake3
+%cmake_build
 
 
 %install
-%make_install
+%cmake_install
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
   %ldconfig_scriptlets
@@ -60,6 +60,9 @@ make %{?_smp_mflags}
 
 
 %changelog
+* Tue Aug 04 2020 FeRD (Frank Dana) <ferdnyc@gmail.com> - 0.2.0-2
+- Update build configs for Fedora 33
+
 * Sat Mar 07 2020 FeRD (Frank Dana) <ferdnyc AT gmail com> - 0.2.0-1
 - New upstream release
 
