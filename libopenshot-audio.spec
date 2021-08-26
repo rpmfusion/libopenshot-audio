@@ -1,6 +1,6 @@
 Name:           libopenshot-audio
-Version:        0.2.0
-Release:        5%{?dist}
+Version:        0.2.1
+Release:        1%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
@@ -11,7 +11,11 @@ Source0:        https://github.com/OpenShot/%{name}/archive/v%{version}/%{name}-
 ExcludeArch:    ppc64le
 
 BuildRequires:  gcc-c++
+%if 0%{?rhel} && 0%{?rhel} <= 7
 BuildRequires:  cmake3
+%else
+BuildRequires:  cmake
+%endif
 BuildRequires:  alsa-lib-devel
 BuildRequires:  zlib-devel
 
@@ -35,13 +39,12 @@ developing applications that use %{name}.
 
 
 %build
-#export CXXFLAGS="%{optflags} -Wl,--as-needed"
 %cmake3
-%cmake_build
+%cmake3_build
 
 
 %install
-%cmake_install
+%cmake3_install
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
   %ldconfig_scriptlets
@@ -49,17 +52,21 @@ developing applications that use %{name}.
 
 %files
 %doc AUTHORS COPYING README.md
-%{_libdir}/*.so.*
+%{_libdir}/%{name}.so.*
 
 %files devel
 %doc
-%{_bindir}/openshot-audio-test-sound
-%{_includedir}/*
-%{_libdir}/*.so
-%{_mandir}/man1/*.1*
+%{_bindir}/openshot-audio-demo
+%{_includedir}/%{name}/
+%{_libdir}/%{name}.so
+%{_libdir}/cmake/OpenShotAudio/
+%{_mandir}/man1/openshot-audio-demo.1*
 
 
 %changelog
+* Thu Aug 26 2021 Leigh Scott <leigh123linux@gmail.com> - 0.2.1-1
+- New upstream release
+
 * Tue Aug 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.2.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
