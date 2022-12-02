@@ -1,6 +1,6 @@
 Name:           libopenshot-audio
-Version:        0.2.2
-Release:        3%{?dist}
+Version:        0.3.0
+Release:        1%{?dist}
 Summary:        Audio library used by OpenShot
 
 License:        GPLv3+
@@ -11,11 +11,7 @@ Source0:        https://github.com/OpenShot/%{name}/archive/v%{version}/%{name}-
 ExcludeArch:    ppc64le
 
 BuildRequires:  gcc-c++
-%if 0%{?rhel} && 0%{?rhel} <= 7
-BuildRequires:  cmake3
-%else
 BuildRequires:  cmake
-%endif
 BuildRequires:  alsa-lib-devel
 BuildRequires:  zlib-devel
 
@@ -39,16 +35,13 @@ developing applications that use %{name}.
 
 
 %build
-%cmake3
-%cmake3_build
+%cmake
+%cmake_build
 
 
 %install
-%cmake3_install
+%cmake_install
 
-%if 0%{?rhel} && 0%{?rhel} <= 7
-  %ldconfig_scriptlets
-%endif
 
 %files
 %doc AUTHORS COPYING README.md
@@ -64,6 +57,9 @@ developing applications that use %{name}.
 
 
 %changelog
+* Fri Dec 02 2022 Leigh Scott <leigh123linux@gmail.com> - 0.3.0-1
+- New upstream release
+
 * Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 0.2.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
