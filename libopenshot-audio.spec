@@ -1,5 +1,5 @@
 Name:           libopenshot-audio
-Version:        0.3.1
+Version:        0.3.2
 Release:        1%{?dist}
 Summary:        Audio library used by OpenShot
 
@@ -57,6 +57,9 @@ developing applications that use %{name}.
 
 
 %changelog
+* Sat Apr 22 2023 Leigh Scott <leigh123linux@gmail.com> - 0.3.2-1
+- New upstream release
+
 * Fri Apr 07 2023 Leigh Scott <leigh123linux@gmail.com> - 0.3.1-1
 - New upstream release
 
